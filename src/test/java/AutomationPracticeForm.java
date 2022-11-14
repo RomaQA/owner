@@ -4,20 +4,16 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
-
 import java.io.File;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class AutomationPracticeForm {
-
     @BeforeAll
     static void beforeAll(){
         Configuration.holdBrowserOpen = true;
         Configuration.browserSize="1920x1080";
         Configuration.baseUrl="https://demoqa.com";
     }
-
     @Test
     void startTest() {
         open("/automation-practice-form");
@@ -35,9 +31,8 @@ public class AutomationPracticeForm {
         $(".subjects-auto-complete__value-container").click();
         $("#subjectsInput").sendKeys("E");
         $("#subjectsInput").pressEnter();
-
         $x("//label[contains(.,'Sports')]").click();
-        $x("//input[@id='uploadPicture']").uploadFile(new File("C:\\file.jpg"));
+        $x("//input[@id='uploadPicture']").uploadFile(new File("src/test/resources/file.jpg"));
         $("#currentAddress").setValue("TestAddress");
         $x("//div[@id='state']").scrollTo();
         $x("//div[@id='state']").click();
@@ -61,20 +56,5 @@ public class AutomationPracticeForm {
                         "State and City NCR Delhi"
         ));
         $("#closeLargeModal").click();
-
-
-
-
-
-
-
- //      $x("//div[@id='stateCity-wrapper'][contains(text(),'Select State')]").click();
-
-
-
-
-
-
-
     }
 }
