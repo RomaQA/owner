@@ -31,7 +31,6 @@ public class RegistrationPage {
             closeLargeModal = $("#closeLargeModal");
 
 
-
     public RegistrationPage openPage(){
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
