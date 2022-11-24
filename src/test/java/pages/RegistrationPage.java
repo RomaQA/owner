@@ -27,7 +27,7 @@ public class RegistrationPage {
             currentAddress = $("#currentAddress"),
             state = $("#state"),
             stateWrapper = $("#stateCity-wrapper"),
-            submit = $x("//button[@id='submit']"),
+            submit = $("#submit"),
             closeLargeModal = $("#closeLargeModal");
 
 
