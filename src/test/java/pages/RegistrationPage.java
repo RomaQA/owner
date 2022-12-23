@@ -26,6 +26,7 @@ public class RegistrationPage {
             uploadPicture = $x("//input[@id='uploadPicture']"),
             currentAddress = $("#currentAddress"),
             state = $("#state"),
+            city = $("#city"),
             stateWrapper = $("#stateCity-wrapper"),
             submit = $("#submit"),
             closeLargeModal = $("#closeLargeModal");
@@ -98,11 +99,12 @@ public class RegistrationPage {
         state.scrollTo();
         state.click();
         stateWrapper.$(byText(value)).click();
+
         return this;
     }
 
     public RegistrationPage setCity(String value) {
-        state.click();
+        city.click();
         stateWrapper.$(byText(value)).click();
         return this;
     }
