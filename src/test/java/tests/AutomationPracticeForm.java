@@ -12,8 +12,9 @@ import pages.RegistrationPage;
 
 import java.io.File;
 import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
-public class AutomationPracticeForm {
+public class AutomationPracticeForm extends TestBase{
     RegistrationPage registrationPage = new RegistrationPage();
     Faker faker = new Faker();
 
@@ -32,15 +33,11 @@ public class AutomationPracticeForm {
             state = "NCR",
             city = "Delhi";
 
-    @BeforeAll
-    static void beforeAll(){
-        Configuration.holdBrowserOpen = false;
-        Configuration.browserSize="1920x1080";
-        Configuration.baseUrl="https://demoqa.com";
-    }
+
 
     @Test
     void startTest() {
+        step("Заполнение формы",()->{
         registrationPage.openPage()
                 .setFirstName(firstName)
                 .setLastName(lastName)
@@ -55,6 +52,8 @@ public class AutomationPracticeForm {
                 .setState(state)
                 .setCity(city)
                 .clickSubmit();
+        });
+        step("Проверка заполненной формы",()->{
         registrationPage.verifyResultsModalAppears()
                         .verifyResult("Student Name", firstName + " " + lastName)
                         .verifyResult("Student Email",email)
@@ -64,6 +63,9 @@ public class AutomationPracticeForm {
                         .verifyResult("Subjects", subject)
                         .verifyResult("Hobbies", hobbies)
                         .verifyResult("State and City", state + " " + city);
+        });
+        step("Закрытие окна",()->{
         registrationPage.clickClose();
+        });
     }
 }
