@@ -68,4 +68,38 @@ public class AutomationPracticeForm extends TestBase{
         registrationPage.clickClose();
         });
     }
+
+    @Test
+    void startFailedTest() {
+        step("Заполнение формы",()->{
+            registrationPage.openPage()
+                    .setFirstName(firstName)
+                    .setLastName(lastName)
+                    .setEmail(email)
+                    .setGender(gender)
+                    .setPhone(number)
+                    .setBirthDate(day,month,year)
+                    .setSubjects(subject)
+                    .setHobbies(hobbies)
+                    .uploadFile(path)
+                    .setAddress(address)
+                    .setState(state)
+                    .setCity(city)
+                    .clickSubmit();
+        });
+        step("Проверка заполненной формы",()->{
+            registrationPage.verifyResultsModalAppears()
+                    .verifyResult("Student Name", firstName + " " + lastName)
+                    .verifyResult("Student Email",email)
+                    .verifyResult("Gender", gender)
+                    .verifyResult("Mobile", "123")    // преднамеренная ошибка
+                    .verifyResult("Date of Birth", day + " " + month + ","+year)
+                    .verifyResult("Subjects", subject)
+                    .verifyResult("Hobbies", hobbies)
+                    .verifyResult("State and City", state + " " + city);
+        });
+        step("Закрытие окна",()->{
+            registrationPage.clickClose();
+        });
+    }
 }
