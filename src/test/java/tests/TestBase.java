@@ -14,8 +14,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class TestBase {
     @BeforeAll
     static void beforeAll(){
-        System.setProperty("setConfig", "local");
-
         WebConfig config = ConfigFactory.create(WebConfig.class, System.getProperties());
         Configuration.browser = config.getBrowser();
         Configuration.browserVersion = config.getVersionBrowser();
